@@ -16,8 +16,8 @@
         }
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #F8F9FA;
-            color: #495057;
+            background-color: #FFF8F0; /* Soft Cream */
+            color: #333333; /* Dark Charcoal */
         }
         main {
             height: 100vh;
@@ -29,7 +29,7 @@
             font-family: 'Playfair Display', serif;
         }
         .parallax-bg {
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-image: url('https://www.transparenttextures.com/patterns/subtle-prism.png');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -40,13 +40,14 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            opacity: 0.05;
+            opacity: 0.1;
         }
         .content-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 1rem;
         }
         .content-card:hover {
             transform: translateY(-5px);
@@ -63,23 +64,12 @@
                 height: 350px;
             }
         }
-        .icon-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 9999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: white;
-        }
         .story-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 2rem 1rem;
+            padding: 4rem 1rem;
             scroll-snap-align: start;
         }
         .accordion-content {
@@ -114,26 +104,28 @@
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
         }
         .gemini-button {
-            background-color: #A3B1FF;
+            background-color: #FF6F61; /* Vibrant Coral */
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 9999px;
             font-size: 0.8rem;
             font-weight: bold;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.2s;
             border: none;
             cursor: pointer;
         }
         .gemini-button:hover {
-            background-color: #8A9AFF;
+            background-color: #E66054;
+            transform: scale(1.05);
         }
         .gemini-button:disabled {
             background-color: #d1d5db;
             cursor: not-allowed;
+            transform: scale(1);
         }
         .loader {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #A3B1FF;
+            border-top: 4px solid #FF6F61; /* Vibrant Coral */
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -159,28 +151,28 @@
             </div>
         </header>
 
-        <section id="genesis" class="story-section bg-white/50">
+        <section id="genesis" class="story-section bg-white/30">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl font-bold mb-4 text-gray-800">It Started With an Idea</h2>
                 <p class="text-lg text-gray-600 mb-12">Before there was Bitcoin, there was a dream: digital money that no bank or government could control. This section explores the key milestones that turned that dream into a reality.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="content-card rounded-xl shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-[#A3B1FF]">1983-1998</h3>
+                    <div class="content-card p-6">
+                        <h3 class="text-2xl font-bold text-[#008080]">1983-1998</h3>
                         <p class="font-semibold mt-2">The Cypherpunks</p>
                         <p class="text-sm text-gray-600 mt-2">Privacy advocates and cryptographers imagined 'ecash', laying the groundwork for anonymous digital money.</p>
                     </div>
-                    <div class="content-card rounded-xl shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-[#A3B1FF]">2009</h3>
+                    <div class="content-card p-6">
+                        <h3 class="text-2xl font-bold text-[#008080]">2009</h3>
                         <p class="font-semibold mt-2">Bitcoin is Born</p>
                         <p class="text-sm text-gray-600 mt-2">The mysterious Satoshi Nakamoto releases Bitcoin, solving the "double-spending" problem with a technology called blockchain.</p>
                     </div>
-                    <div class="content-card rounded-xl shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-[#A3B1FF]">2015</h3>
+                    <div class="content-card p-6">
+                        <h3 class="text-2xl font-bold text-[#008080]">2015</h3>
                         <p class="font-semibold mt-2">Ethereum's Revolution</p>
                         <p class="text-sm text-gray-600 mt-2">Ethereum introduces "smart contracts," turning blockchain into a global computer for building unstoppable applications.</p>
                     </div>
-                    <div class="content-card rounded-xl shadow-lg p-6">
-                        <h3 class="text-2xl font-bold text-[#A3B1FF]">2024</h3>
+                    <div class="content-card p-6">
+                        <h3 class="text-2xl font-bold text-[#008080]">2024</h3>
                         <p class="font-semibold mt-2">Wall Street Arrives</p>
                         <p class="text-sm text-gray-600 mt-2">The U.S. approves Bitcoin ETFs, creating a regulated bridge for mainstream investors to enter the crypto market.</p>
                     </div>
@@ -194,8 +186,8 @@
                 <p class="text-lg text-gray-600 text-center mb-12">The crypto market's value has exploded, but it's a volatile ride. These charts show the scale of its growth and which assets dominate the landscape.</p>
                 
                 <div class="space-y-4">
-                    <div class="content-card rounded-xl shadow-lg">
-                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center">
+                    <div class="content-card">
+                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center" data-chart-id="marketCapChart">
                             <h3 class="text-2xl font-bold">Market Cap Growth: A Volatile Rocket Ship</h3>
                             <svg class="chevron w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -209,8 +201,8 @@
                         </div>
                     </div>
 
-                    <div class="content-card rounded-xl shadow-lg">
-                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center">
+                    <div class="content-card">
+                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center" data-chart-id="marketDominanceChart">
                             <h3 class="text-2xl font-bold">Market Dominance: The Kings and Contenders</h3>
                              <svg class="chevron w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -227,14 +219,14 @@
             </div>
         </section>
 
-        <section id="regulation" class="story-section bg-white/50">
+        <section id="regulation" class="story-section bg-white/30">
              <div class="max-w-4xl mx-auto w-full">
                 <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">The World Lays Down the Law</h2>
                 <p class="text-lg text-gray-600 text-center mb-12">Governments can't ignore crypto anymore. But how do you regulate a borderless technology? The answer is complicated, with each country taking a wildly different approach.</p>
                 
                 <div class="space-y-4">
-                    <div class="content-card rounded-xl shadow-lg">
-                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center">
+                    <div class="content-card">
+                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center" data-chart-id="regulationRadarChart">
                             <h3 class="text-2xl font-bold">National Approaches: A Global Tug-of-War</h3>
                              <svg class="chevron w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -257,8 +249,8 @@
                 <p class="text-lg text-gray-600 text-center mb-12">Crypto's integration into the real world brings both huge opportunities and serious risks. It's a technology with the power to build and to break.</p>
                 
                 <div class="space-y-4">
-                    <div class="content-card rounded-xl shadow-lg">
-                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center">
+                    <div class="content-card">
+                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center" data-chart-id="derivativesDonutChart">
                             <h3 class="text-2xl font-bold">Systemic Risk: When Bets Get Too Big</h3>
                              <svg class="chevron w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -275,8 +267,8 @@
                         </div>
                     </div>
 
-                    <div class="content-card rounded-xl shadow-lg">
-                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center">
+                    <div class="content-card">
+                        <button class="accordion-toggle w-full p-6 text-left flex justify-between items-center" data-chart-id="illicitFinanceBarChart">
                             <h3 class="text-2xl font-bold">Illicit Use: The Dark Side</h3>
                              <svg class="chevron w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -293,11 +285,11 @@
             </div>
         </section>
 
-        <section id="casestudy" class="story-section bg-white/50">
+        <section id="casestudy" class="story-section bg-white/30">
             <div class="max-w-4xl mx-auto w-full">
                 <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Case Study: El Salvador's Gamble</h2>
                 <p class="text-lg text-gray-600 text-center mb-12">In 2021, El Salvador did something radical: it made Bitcoin an official currency. It was a bold real-world test of crypto's promise. Here's what happened.</p>
-                <div class="content-card rounded-xl shadow-lg p-6">
+                <div class="content-card p-6">
                     <h3 class="text-2xl font-bold text-center mb-4">Adoption & Inclusion Goals Missed</h3>
                     <p class="text-center text-sm text-gray-600 mb-4">Despite a government mandate, usage for daily transactions and remittances remained negligible, failing to bank the unbanked.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -316,15 +308,15 @@
                         <div class="accordion-content">
                             <ul class="space-y-4 p-4">
                                 <li class="flex items-start">
-                                    <div class="icon-circle bg-[#FFADAD] flex-shrink-0">✗</div>
+                                    <div class="icon-circle bg-[#F4C2C2] flex-shrink-0 text-red-800">✗</div>
                                     <span class="ml-4 text-gray-700"><strong>Tech isn't a silver bullet.</strong> Bitcoin couldn't solve deep-rooted economic problems overnight.</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="icon-circle bg-[#FFADAD] flex-shrink-0">✗</div>
+                                    <div class="icon-circle bg-[#F4C2C2] flex-shrink-0 text-red-800">✗</div>
                                     <span class="ml-4 text-gray-700"><strong>Trust is everything.</strong> Without proper education and a reliable app, most people were too hesitant to use it.</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <div class="icon-circle bg-[#FFADAD] flex-shrink-0">✗</div>
+                                    <div class="icon-circle bg-[#F4C2C2] flex-shrink-0 text-red-800">✗</div>
                                     <span class="ml-4 text-gray-700"><strong>Old money still has power.</strong> Global institutions like the IMF pressured El Salvador, ultimately leading them to reverse the law.</span>
                                 </li>
                             </ul>
@@ -341,9 +333,9 @@
                  <div class="bg-white/80 p-4 rounded-lg mb-4 text-sm text-center">
                      Your User ID: <strong id="user-id-display" class="break-all">Loading...</strong>
                  </div>
-                 <div class="content-card rounded-xl shadow-lg p-6">
+                 <div class="content-card p-6">
                      <div id="comment-form">
-                         <textarea id="comment-input" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-300 focus:outline-none" rows="3" placeholder="What's on your mind?"></textarea>
+                         <textarea id="comment-input" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#AEC6CF] focus:outline-none" rows="3" placeholder="What's on your mind?"></textarea>
                          <button id="submit-comment" class="gemini-button mt-2 px-6 py-2">Submit</button>
                      </div>
                      <div id="comments-list" class="mt-6 space-y-4 max-h-96 overflow-y-auto">
@@ -353,7 +345,7 @@
             </div>
         </section>
 
-        <footer class="story-section text-center bg-white/50">
+        <footer class="story-section text-center bg-white/30">
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-4xl font-bold mb-8 text-gray-800">The Unwritten Future</h2>
                 <p class="text-lg text-gray-600 mb-12">The crypto story is far from over. As technology and regulation continue to evolve, three major questions will define the next chapter.</p>
@@ -396,12 +388,197 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             const palette = {
-                blue: '#A3B1FF',
-                orange: '#FFD6A5',
-                green: '#C8E6C9',
-                red: '#FFADAD',
-                darkGray: '#495057',
+                coral: '#FF6F61',
+                teal: '#008080',
+                softBlue: '#AEC6CF',
+                dustyRose: '#F4C2C2',
+                charcoal: '#333333',
                 lightGray: '#ADB5BD'
+            };
+
+            // --- Chart Options and Helpers (Defined First) ---
+            const wrapLabel = (str, maxLen = 16) => {
+                if (typeof str !== 'string' || str.length <= maxLen) return str;
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxLen && currentLine.length > 0) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                }
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const tooltipConfig = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const baseChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: palette.charcoal, font: { family: "'Lato', sans-serif" } } },
+                    ...tooltipConfig.plugins
+                }
+            };
+
+            const cartesianChartOptions = {
+                ...baseChartOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                        ticks: { color: palette.lightGray, font: { family: "'Lato', sans-serif" } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: palette.lightGray, font: { family: "'Lato', sans-serif" } }
+                    }
+                }
+            };
+            
+            const radarChartOptions = {
+                ...baseChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { color: palette.charcoal, font: { size: 12, family: "'Lato', sans-serif" } },
+                        ticks: { color: palette.charcoal, backdropColor: 'rgba(255, 248, 240, 0.75)' }
+                    }
+                }
+            };
+            
+            // --- Chart Initializers (Depend on options above) ---
+            const chartInstances = {};
+            const chartInitializers = {
+                marketCapChart: () => {
+                    const ctx = document.getElementById('marketCapChart').getContext('2d');
+                    return new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['2015', '2017', '2019', '2021', '2023', '2025'],
+                            datasets: [{
+                                label: 'Total Market Cap (Trillion USD)',
+                                data: [0.007, 0.14, 0.2, 2.5, 1.2, 4.0],
+                                borderColor: palette.coral,
+                                backgroundColor: 'rgba(255, 111, 97, 0.2)',
+                                fill: true,
+                                tension: 0.4,
+                            }]
+                        },
+                        options: cartesianChartOptions
+                    });
+                },
+                marketDominanceChart: () => {
+                     const ctx = document.getElementById('marketDominanceChart').getContext('2d');
+                     return new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Bitcoin', 'Ethereum', 'Stablecoins', 'Other Altcoins'],
+                            datasets: [{
+                                label: 'Market Share %',
+                                data: [45, 18, 12, 25],
+                                backgroundColor: [palette.teal, palette.softBlue, palette.dustyRose, palette.lightGray],
+                                borderRadius: 4,
+                            }]
+                        },
+                        options: { ...cartesianChartOptions, plugins: { ...cartesianChartOptions.plugins, legend: { display: false } } }
+                    });
+                },
+                regulationRadarChart: () => {
+                    const ctx = document.getElementById('regulationRadarChart').getContext('2d');
+                    return new Chart(ctx, {
+                        type: 'radar',
+                        data: {
+                            labels: ['Legal Clarity', 'Favorable Tax', 'Clear Regulation', 'Light Enforcement', 'Pro-Innovation'],
+                            datasets: [
+                                { label: 'EU (MiCAR)', data: [4, 3, 5, 4, 4], backgroundColor: 'rgba(0, 128, 128, 0.2)', borderColor: palette.teal },
+                                { label: 'USA (Post-GENIUS)', data: [3, 3, 4, 2, 4], backgroundColor: 'rgba(174, 198, 207, 0.2)', borderColor: palette.softBlue },
+                                { label: 'China (Ban)', data: [1, 1, 1, 1, 1], backgroundColor: 'rgba(244, 194, 194, 0.2)', borderColor: palette.dustyRose }
+                            ]
+                        },
+                        options: radarChartOptions
+                    });
+                },
+                derivativesDonutChart: () => {
+                    const ctx = document.getElementById('derivativesDonutChart').getContext('2d');
+                    return new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Derivatives Market', 'Spot Market'],
+                            datasets: [{
+                                data: [1.33, 0.34],
+                                backgroundColor: [palette.coral, palette.softBlue],
+                                borderColor: '#FFF8F0',
+                                borderWidth: 4
+                            }]
+                        },
+                        options: baseChartOptions
+                    });
+                },
+                illicitFinanceBarChart: () => {
+                    const ctx = document.getElementById('illicitFinanceBarChart').getContext('2d');
+                    return new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [wrapLabel('Fraud & Scams (Annual)'), wrapLabel('Ransomware (Annual)'), wrapLabel('State-Sponsored Theft (Total)')],
+                            datasets: [{
+                                label: 'Value in Billion USD',
+                                data: [51, 0.9, 3.5],
+                                backgroundColor: [palette.coral, palette.teal, palette.charcoal],
+                                borderRadius: 4
+                            }]
+                        },
+                        options: { ...baseChartOptions, indexAxis: 'y', plugins: { ...baseChartOptions.plugins, legend: { display: false } }, scales: { x: { ...cartesianChartOptions.scales.x, beginAtZero: true }, y: { ...cartesianChartOptions.scales.y, grid: { display: false } } } }
+                    });
+                },
+                elSalvadorAdoptionChart: () => {
+                     const ctx = document.getElementById('elSalvadorAdoptionChart').getContext('2d');
+                     return new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Unbanked (Goal)', 'Consumer Use', 'Remittance Use'],
+                            datasets: [{
+                                label: 'Percentage (%)',
+                                data: [70, 12, 1],
+                                backgroundColor: [palette.lightGray, palette.softBlue, palette.dustyRose],
+                                borderRadius: 4
+                            }]
+                        },
+                        options: { ...cartesianChartOptions, plugins: { ...cartesianChartOptions.plugins, legend: { display: false } }, scales: { ...cartesianChartOptions.scales, y: {...cartesianChartOptions.scales.y, ticks: { ...cartesianChartOptions.scales.y.ticks, callback: (v) => v+'%' } } } }
+                    });
+                },
+                chivoAtmChart: () => {
+                    const ctx = document.getElementById('chivoAtmChart').getContext('2d');
+                    return new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['ATMs in Poorest Rural Areas', 'ATMs Elsewhere'],
+                            datasets: [{
+                                data: [4.9, 95.1],
+                                backgroundColor: [palette.dustyRose, palette.softBlue],
+                                borderColor: '#FFF8F0',
+                                borderWidth: 4
+                            }]
+                        },
+                        options: baseChartOptions
+                    });
+                }
             };
 
             // --- Firebase Integration ---
@@ -410,7 +587,10 @@
             const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
             
             try {
-                const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+                if (typeof __firebase_config === 'undefined' || !__firebase_config) {
+                    throw new Error("Firebase config not provided.");
+                }
+                const firebaseConfig = JSON.parse(__firebase_config);
                 const app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
@@ -430,47 +610,52 @@
                 }
             } catch (error) {
                 console.error("Firebase initialization failed:", error);
-                document.getElementById('community').innerHTML = '<p class="text-center text-red-500">Could not connect to the community features.</p>';
+                const communitySection = document.getElementById('community');
+                if(communitySection) {
+                    communitySection.innerHTML = `<div class="max-w-4xl mx-auto w-full text-center"><h2 class="text-4xl font-bold mb-4 text-gray-800">Community Reactions</h2><div class="content-card p-6"><p class="text-red-500">Community features are unavailable in this environment.</p></div></div>`;
+                }
             }
 
-            const commentForm = document.getElementById('comment-form');
             const commentInput = document.getElementById('comment-input');
             const submitButton = document.getElementById('submit-comment');
             const commentsList = document.getElementById('comments-list');
             const commentsLoader = document.getElementById('comments-loader');
 
-            submitButton.addEventListener('click', async () => {
-                const commentText = commentInput.value.trim();
-                if (!commentText || !userId) return;
+            if(submitButton) {
+                submitButton.addEventListener('click', async () => {
+                    const commentText = commentInput.value.trim();
+                    if (!commentText || !userId) return;
 
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Submitting...';
 
-                try {
-                    const commentsCollectionPath = `artifacts/${appId}/public/data/comments`;
-                    await addDoc(collection(db, commentsCollectionPath), {
-                        text: commentText,
-                        author: userId,
-                        createdAt: serverTimestamp()
-                    });
-                    commentInput.value = '';
-                } catch (error) {
-                    console.error("Error adding comment: ", error);
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Submit';
-                }
-            });
+                    try {
+                        const commentsCollectionPath = `artifacts/${appId}/public/data/comments`;
+                        await addDoc(collection(db, commentsCollectionPath), {
+                            text: commentText,
+                            author: userId,
+                            createdAt: serverTimestamp()
+                        });
+                        commentInput.value = '';
+                    } catch (error) {
+                        console.error("Error adding comment: ", error);
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit';
+                    }
+                });
+            }
 
             function listenForComments() {
+                if (!db) return;
                 const commentsCollectionPath = `artifacts/${appId}/public/data/comments`;
                 const q = query(collection(db, commentsCollectionPath), orderBy('createdAt', 'desc'));
 
                 onSnapshot(q, (snapshot) => {
-                    commentsLoader.style.display = 'none';
-                    commentsList.innerHTML = '';
+                    if(commentsLoader) commentsLoader.style.display = 'none';
+                    if(commentsList) commentsList.innerHTML = '';
                     if (snapshot.empty) {
-                        commentsList.innerHTML = '<p class="text-center text-gray-500">No comments yet. Be the first!</p>';
+                        if(commentsList) commentsList.innerHTML = '<p class="text-center text-gray-500">No comments yet. Be the first!</p>';
                         return;
                     }
                     snapshot.forEach(doc => {
@@ -488,11 +673,11 @@
 
                         commentEl.appendChild(authorEl);
                         commentEl.appendChild(textEl);
-                        commentsList.appendChild(commentEl);
+                        if(commentsList) commentsList.appendChild(commentEl);
                     });
                 }, (error) => {
                     console.error("Error listening for comments:", error);
-                    commentsList.innerHTML = '<p class="text-center text-red-500">Error loading comments.</p>';
+                    if(commentsList) commentsList.innerHTML = '<p class="text-center text-red-500">Error loading comments.</p>';
                 });
             }
 
@@ -578,11 +763,10 @@
                     
                     if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
                         const trendsHtml = result.candidates[0].content.parts[0].text;
-                        // Simple parser to split by <h4>
                         const trends = trendsHtml.split('<h4>').slice(1);
                         trends.forEach(trend => {
                             const card = document.createElement('div');
-                            card.className = 'content-card rounded-xl shadow-lg p-6 text-left';
+                            card.className = 'content-card p-6 text-left';
                             card.innerHTML = `<h4>${trend.replace(/<\/h4>/, '</h4>')}`;
                             forecastResults.appendChild(card);
                         });
@@ -598,224 +782,32 @@
             });
 
 
-            // --- Existing Chart and UI Logic ---
-            const accordionToggles = document.querySelectorAll('.accordion-toggle');
-            accordionToggles.forEach(toggle => {
+            // --- UI Logic (Accordions and Chart Init on Open) ---
+            document.querySelectorAll('.accordion-toggle').forEach(toggle => {
                 toggle.addEventListener('click', () => {
                     const content = toggle.nextElementSibling;
+                    const chartId = toggle.dataset.chartId;
+
                     toggle.classList.toggle('open');
                     if (content.style.maxHeight) {
                         content.style.maxHeight = null;
                     } else {
                         content.style.maxHeight = content.scrollHeight + "px";
+                        if (chartId && !chartInstances[chartId]) {
+                            chartInstances[chartId] = chartInitializers[chartId]();
+                        }
                     }
                 });
             });
-
-            const wrapLabel = (str, maxLen = 16) => {
-                if (typeof str !== 'string' || str.length <= maxLen) return str;
-                const words = str.split(' ');
-                const lines = [];
-                let currentLine = '';
-                for (const word of words) {
-                    if ((currentLine + word).length > maxLen && currentLine.length > 0) {
-                        lines.push(currentLine.trim());
-                        currentLine = '';
-                    }
-                    currentLine += word + ' ';
-                }
-                lines.push(currentLine.trim());
-                return lines;
-            };
-
-            const tooltipConfig = {
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.dataIndex];
-                                return Array.isArray(label) ? label.join(' ') : label;
-                            }
-                        }
-                    }
-                }
-            };
-
-            const baseChartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { labels: { color: palette.darkGray, font: { family: "'Lato', sans-serif" } } },
-                    ...tooltipConfig.plugins
-                }
-            };
-
-            const cartesianChartOptions = {
-                ...baseChartOptions,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: 'rgba(0, 0, 0, 0.05)' },
-                        ticks: { color: palette.lightGray, font: { family: "'Lato', sans-serif" } }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: palette.lightGray, font: { family: "'Lato', sans-serif" } }
-                    }
-                }
-            };
             
-            const radarChartOptions = {
-                ...baseChartOptions,
-                scales: {
-                    r: {
-                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
-                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
-                        pointLabels: { color: palette.darkGray, font: { size: 12, family: "'Lato', sans-serif" } },
-                        ticks: { color: palette.darkGray, backdropColor: 'rgba(255, 255, 255, 0.75)' }
-                    }
+            // Initialize charts that are always visible on page load
+            ['elSalvadorAdoptionChart', 'chivoAtmChart'].forEach(id => {
+                if(document.getElementById(id) && !chartInstances[id]) {
+                    chartInstances[id] = chartInitializers[id]();
                 }
-            };
-            
-            const marketCapCtx = document.getElementById('marketCapChart');
-            if(marketCapCtx) {
-                new Chart(marketCapCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['2015', '2017', '2019', '2021', '2023', '2025'],
-                        datasets: [{
-                            label: 'Total Market Cap (Trillion USD)',
-                            data: [0.007, 0.14, 0.2, 2.5, 1.2, 4.0],
-                            borderColor: palette.blue,
-                            backgroundColor: 'rgba(163, 177, 255, 0.2)',
-                            fill: true,
-                            tension: 0.4,
-                        }]
-                    },
-                    options: cartesianChartOptions
-                });
-            }
-
-            const marketDominanceCtx = document.getElementById('marketDominanceChart');
-            if(marketDominanceCtx) {
-                new Chart(marketDominanceCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Bitcoin', 'Ethereum', 'Stablecoins', 'Other Altcoins'],
-                        datasets: [{
-                            label: 'Market Share %',
-                            data: [45, 18, 12, 25],
-                            backgroundColor: [palette.orange, palette.blue, palette.green, palette.lightGray],
-                            borderRadius: 4,
-                        }]
-                    },
-                    options: { ...cartesianChartOptions, plugins: { ...cartesianChartOptions.plugins, legend: { display: false } } }
-                });
-            }
-
-            const regulationRadarCtx = document.getElementById('regulationRadarChart');
-            if(regulationRadarCtx) {
-                new Chart(regulationRadarCtx, {
-                    type: 'radar',
-                    data: {
-                        labels: ['Legal Clarity', 'Favorable Tax', 'Clear Regulation', 'Light Enforcement', 'Pro-Innovation'],
-                        datasets: [
-                            { label: 'EU (MiCAR)', data: [4, 3, 5, 4, 4], backgroundColor: 'rgba(163, 177, 255, 0.2)', borderColor: palette.blue },
-                            { label: 'USA (Post-GENIUS)', data: [3, 3, 4, 2, 4], backgroundColor: 'rgba(200, 230, 201, 0.2)', borderColor: palette.green },
-                            { label: 'China (Ban)', data: [1, 1, 1, 1, 1], backgroundColor: 'rgba(255, 173, 173, 0.2)', borderColor: palette.red }
-                        ]
-                    },
-                    options: radarChartOptions
-                });
-            }
-
-            const derivativesDonutCtx = document.getElementById('derivativesDonutChart');
-            if(derivativesDonutCtx) {
-                new Chart(derivativesDonutCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Derivatives Market', 'Spot Market'],
-                        datasets: [{
-                            data: [1.33, 0.34],
-                            backgroundColor: [palette.blue, palette.orange],
-                            borderColor: '#F8F9FA',
-                            borderWidth: 4
-                        }]
-                    },
-                    options: baseChartOptions
-                });
-            }
-
-            const illicitFinanceBarCtx = document.getElementById('illicitFinanceBarChart');
-            if(illicitFinanceBarCtx) {
-                new Chart(illicitFinanceBarCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: [wrapLabel('Fraud & Scams (Annual)'), wrapLabel('Ransomware (Annual)'), wrapLabel('State-Sponsored Theft (Total)')],
-                        datasets: [{
-                            label: 'Value in Billion USD',
-                            data: [51, 0.9, 3.5],
-                            backgroundColor: [palette.red, palette.orange, palette.darkGray],
-                            borderRadius: 4
-                        }]
-                    },
-                    options: { 
-                        ...baseChartOptions, 
-                        indexAxis: 'y', 
-                        plugins: { 
-                            ...baseChartOptions.plugins, 
-                            legend: { display: false } 
-                        },
-                        scales: {
-                            x: {
-                                beginAtZero: true,
-                                grid: { color: 'rgba(0, 0, 0, 0.05)' },
-                                ticks: { color: palette.lightGray, font: { family: "'Lato', sans-serif" } }
-                            },
-                            y: {
-                                grid: { display: false },
-                                ticks: { color: palette.lightGray, font: { family: "'Lato', sans-serif" } }
-                            }
-                        }
-                    }
-                });
-            }
-
-            const elSalvadorAdoptionCtx = document.getElementById('elSalvadorAdoptionChart');
-            if(elSalvadorAdoptionCtx) {
-                new Chart(elSalvadorAdoptionCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Unbanked (Goal)', 'Consumer Use', 'Remittance Use'],
-                        datasets: [{
-                            label: 'Percentage (%)',
-                            data: [70, 12, 1],
-                            backgroundColor: [palette.lightGray, palette.blue, palette.red],
-                            borderRadius: 4
-                        }]
-                    },
-                    options: { ...cartesianChartOptions, plugins: { ...cartesianChartOptions.plugins, legend: { display: false } }, scales: { ...cartesianChartOptions.scales, y: {...cartesianChartOptions.scales.y, ticks: { ...cartesianChartOptions.scales.y.ticks, callback: (v) => v+'%' } } } }
-                });
-            }
-
-            const chivoAtmCtx = document.getElementById('chivoAtmChart');
-            if(chivoAtmCtx) {
-                new Chart(chivoAtmCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['ATMs in Poorest Rural Areas', 'ATMs Elsewhere'],
-                        datasets: [{
-                            data: [4.9, 95.1],
-                            backgroundColor: [palette.red, palette.blue],
-                            borderColor: '#F8F9FA',
-                            borderWidth: 4
-                        }]
-                    },
-                    options: baseChartOptions
-                });
-            }
+            });
         });
     </script>
 </body>
 </html>
+
