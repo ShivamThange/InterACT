@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
         body {
             font-family: 'Lato', sans-serif;
             background-color: #F8F9FA;
             color: #495057;
+        }
+        main {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
@@ -70,6 +80,7 @@
             flex-direction: column;
             justify-content: center;
             padding: 2rem 1rem;
+            scroll-snap-align: start;
         }
         .accordion-content {
             max-height: 0;
@@ -110,9 +121,15 @@
             font-size: 0.8rem;
             font-weight: bold;
             transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
         }
         .gemini-button:hover {
             background-color: #8A9AFF;
+        }
+        .gemini-button:disabled {
+            background-color: #d1d5db;
+            cursor: not-allowed;
         }
         .loader {
             border: 4px solid #f3f3f3;
@@ -316,8 +333,27 @@
                 </div>
             </div>
         </section>
+        
+        <section id="community" class="story-section">
+            <div class="max-w-4xl mx-auto w-full">
+                 <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Community Reactions</h2>
+                 <p class="text-lg text-gray-600 text-center mb-6">Join the conversation! Share your thoughts on the crypto ecosystem. Comments are public and update in real-time.</p>
+                 <div class="bg-white/80 p-4 rounded-lg mb-4 text-sm text-center">
+                     Your User ID: <strong id="user-id-display" class="break-all">Loading...</strong>
+                 </div>
+                 <div class="content-card rounded-xl shadow-lg p-6">
+                     <div id="comment-form">
+                         <textarea id="comment-input" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-300 focus:outline-none" rows="3" placeholder="What's on your mind?"></textarea>
+                         <button id="submit-comment" class="gemini-button mt-2 px-6 py-2">Submit</button>
+                     </div>
+                     <div id="comments-list" class="mt-6 space-y-4 max-h-96 overflow-y-auto">
+                        <div id="comments-loader" class="mx-auto loader"></div>
+                     </div>
+                 </div>
+            </div>
+        </section>
 
-        <footer class="story-section text-center">
+        <footer class="story-section text-center bg-white/50">
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-4xl font-bold mb-8 text-gray-800">The Unwritten Future</h2>
                 <p class="text-lg text-gray-600 mb-12">The crypto story is far from over. As technology and regulation continue to evolve, three major questions will define the next chapter.</p>
@@ -353,8 +389,12 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        document.addEventListener('DOMContentLoaded', async () => {
             const palette = {
                 blue: '#A3B1FF',
                 orange: '#FFD6A5',
@@ -363,6 +403,99 @@
                 darkGray: '#495057',
                 lightGray: '#ADB5BD'
             };
+
+            // --- Firebase Integration ---
+            let db, auth;
+            let userId = null;
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            
+            try {
+                const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        document.getElementById('user-id-display').textContent = userId;
+                        listenForComments();
+                    }
+                });
+
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Firebase initialization failed:", error);
+                document.getElementById('community').innerHTML = '<p class="text-center text-red-500">Could not connect to the community features.</p>';
+            }
+
+            const commentForm = document.getElementById('comment-form');
+            const commentInput = document.getElementById('comment-input');
+            const submitButton = document.getElementById('submit-comment');
+            const commentsList = document.getElementById('comments-list');
+            const commentsLoader = document.getElementById('comments-loader');
+
+            submitButton.addEventListener('click', async () => {
+                const commentText = commentInput.value.trim();
+                if (!commentText || !userId) return;
+
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                try {
+                    const commentsCollectionPath = `artifacts/${appId}/public/data/comments`;
+                    await addDoc(collection(db, commentsCollectionPath), {
+                        text: commentText,
+                        author: userId,
+                        createdAt: serverTimestamp()
+                    });
+                    commentInput.value = '';
+                } catch (error) {
+                    console.error("Error adding comment: ", error);
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                }
+            });
+
+            function listenForComments() {
+                const commentsCollectionPath = `artifacts/${appId}/public/data/comments`;
+                const q = query(collection(db, commentsCollectionPath), orderBy('createdAt', 'desc'));
+
+                onSnapshot(q, (snapshot) => {
+                    commentsLoader.style.display = 'none';
+                    commentsList.innerHTML = '';
+                    if (snapshot.empty) {
+                        commentsList.innerHTML = '<p class="text-center text-gray-500">No comments yet. Be the first!</p>';
+                        return;
+                    }
+                    snapshot.forEach(doc => {
+                        const comment = doc.data();
+                        const commentEl = document.createElement('div');
+                        commentEl.className = 'bg-gray-50 p-3 rounded-lg border';
+                        
+                        const authorEl = document.createElement('p');
+                        authorEl.className = 'text-xs text-gray-500 break-all';
+                        authorEl.textContent = `From: ${comment.author}`;
+                        
+                        const textEl = document.createElement('p');
+                        textEl.className = 'text-gray-700';
+                        textEl.textContent = comment.text;
+
+                        commentEl.appendChild(authorEl);
+                        commentEl.appendChild(textEl);
+                        commentsList.appendChild(commentEl);
+                    });
+                }, (error) => {
+                    console.error("Error listening for comments:", error);
+                    commentsList.innerHTML = '<p class="text-center text-red-500">Error loading comments.</p>';
+                });
+            }
+
 
             // --- Gemini API Integration ---
             const modal = document.getElementById('explanation-modal');
